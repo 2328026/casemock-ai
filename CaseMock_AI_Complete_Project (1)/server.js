@@ -1,4 +1,4 @@
-﻿const express = require("express");
+const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const cors = require("cors");
@@ -382,9 +382,15 @@ app.get("/api/telemetry/stats", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🚀 CaseMock AI is running live at http://localhost:${PORT}`);
-  console.log(`📊 Slide Deck available at http://localhost:${PORT}/slides.html`);
-  console.log(`====================================================`);
-});
+// Local development: only start the listener when run directly (node server.js).
+// On Vercel, the module is imported and Vercel's runtime handles requests instead.
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🚀 CaseMock AI is running live at http://localhost:${PORT}`);
+    console.log(`📊 Slide Deck available at http://localhost:${PORT}/slides.html`);
+    console.log(`====================================================`);
+  });
+}
+
+module.exports = app;

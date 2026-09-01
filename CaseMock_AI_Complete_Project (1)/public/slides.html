@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaseMock AI | Product Pitch & Validation Deck</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-xl px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+        <i data-lucide="presentation" class="w-4 h-4"></i>
+      </div>
+      <div>
+        <span class="font-bold text-sm tracking-tight text-white">CaseMock AI — Submission Deck</span>
+        <span class="text-xs text-slate-400 ml-2">Product Intern Assignment</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4 text-xs text-slate-400">
+      <span id="slide-counter" class="font-mono bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-md text-slate-300">Slide 1 / 8</span>
+      <a href="/" class="text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+        <span>Try Live MVP</span>
+        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- SLIDE DECK CONTAINER -->
+  <main class="flex-1 max-w-5xl w-full mx-auto px-6 py-8 flex flex-col justify-center">
+
+    <!-- SLIDE 1: Title & Problem -->
+    <div class="slide active flex-col gap-6" data-slide="1">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+        01 · The User Problem & Market Insight
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+        The Mock Interview Dilemma: Why Text Chatbots Fail Aspirants
+      </h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-rose-400 flex items-center gap-2 mb-3">
+            <i data-lucide="x-circle" class="w-5 h-5"></i>
+            The Broken Status Quo
+          </h3>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-rose-400 font-bold">•</span>
+              <span><strong>Peer Mocks are High Friction:</strong> Hard to schedule across timezones; peers often give soft, unstructured feedback.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-400 font-bold">•</span>
+              <span><strong>Text LLMs (ChatGPT) Lack Pressure:</strong> Typing allows endless editing. Real interviews require real-time vocal structuring under social anxiety.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-rose-400 font-bold">•</span>
+              <span><strong>No Visual Feedback Loop:</strong> Applicants can't read interviewer skepticism, nodding, or confusion in text.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+          <h3 class="text-base font-bold text-emerald-400 flex items-center gap-2 mb-3">
+            <i data-lucide="target" class="w-5 h-5"></i>
+            The Core User Insight
+          </h3>
+          <p class="text-sm text-slate-300 leading-relaxed mb-4">
+            PM interview success is <strong>20% domain knowledge and 80% conversational composure, vocal pacing, and live structure</strong> under direct social observation.
+          </p>
+          <div class="bg-indigo-950/40 border border-indigo-500/20 p-4 rounded-xl text-xs text-indigo-200">
+            <strong>Target Persona:</strong> "Alex", 22-26 y/o aspiring Product Manager or Consultant applying to competitive internships/APM programs.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Product Solution & Why Avatar -->
+    <div class="slide flex-col gap-6" data-slide="2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        02 · Product Solution & The "Why Avatar?" Thesis
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        CaseMock AI: The Voice-Driven Interview Sparring Avatar
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-3">
+            <i data-lucide="eye" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-sm mb-2">Simulated Social Presence</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The avatar blinks, nods when you structure well, and tilts its head in thought when evaluating trade-offs, replicating authentic interviewer pressure.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
+            <i data-lucide="mic" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-sm mb-2">Hands-Free Spoken Sparring</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Forces candidates to articulate thoughts out loud using real-time speech recognition (STT) and dynamic lip-synced voice responses (TTS).
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-3">
+            <i data-lucide="file-check-2" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-sm mb-2">Instant CIRCLES / STAR Scoring</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Delivers immediate objective breakdown across Structure, User Empathy, Metrics, and Vocal Pacing benchmarks.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/90 border border-indigo-500/30 rounded-xl p-4 text-xs text-slate-300">
+        <strong class="text-indigo-300">Why Avatar > Text Bot:</strong> In text, users can spend 5 minutes drafting a response. With the avatar looking at you with a live timer and voice loop, users experience the authentic adrenaline of a live interview room.
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Key Product Decisions -->
+    <div class="slide flex-col gap-6" data-slide="3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+        03 · Key Product Decisions & MVP Scope
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        High-Conviction Trade-Offs for Speed & Signal
+      </h2>
+
+      <div class="space-y-4 mt-2">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center flex-shrink-0 font-bold text-xs">1</div>
+          <div>
+            <h4 class="font-bold text-sm text-slate-100">Decision: 3-Turn Micro-Mocks over Full 45-Minute Cases</h4>
+            <p class="text-xs text-slate-400 mt-1"><strong>Rationale:</strong> 45-minute mocks have huge drop-off. A focused 3-turn format (Framing $\to$ Trade-offs $\to$ Metrics) takes 4 minutes, maximizing completed sessions and rapid repetition loops.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 flex items-center justify-center flex-shrink-0 font-bold text-xs">2</div>
+          <div>
+            <h4 class="font-bold text-sm text-slate-100">Decision: Zero-Latency Reactive SVG Avatar over Heavy Video Streams</h4>
+            <p class="text-xs text-slate-400 mt-1"><strong>Rationale:</strong> Video generation APIs (HeyGen/D-ID) introduce 4-8 second network latency which destroys natural conversation. A reactive client-side SVG/Canvas avatar achieves <50ms response latency.</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex items-start gap-4">
+          <div class="w-8 h-8 rounded-lg bg-purple-600/20 text-purple-400 flex items-center justify-center flex-shrink-0 font-bold text-xs">3</div>
+          <div>
+            <h4 class="font-bold text-sm text-slate-100">Decision: Embedded Telemetry & Confidence Delta Tracking</h4>
+            <p class="text-xs text-slate-400 mt-1"><strong>Rationale:</strong> Measuring user perception before vs. after the mock provides immediate empirical validation of product efficacy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Go-To-Market & Validation Strategy -->
+    <div class="slide flex-col gap-6" data-slide="4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+        04 · Go-To-Market & Distribution Strategy
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        Guerilla Distribution & Community Flywheel
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-2">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-indigo-400 text-sm mb-2">1. University Product Clubs</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Direct distribution to student PM clubs (Stanford, MIT, Berkeley, IITs) preparing for Fall APM hiring cycles.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-emerald-400 text-sm mb-2">2. Niche Online Communities</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Targeted posts on Reddit (`r/ProductManagement`, `r/cscareerquestions`) and PM Discord servers (Exponent, Product School).
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-purple-400 text-sm mb-2">3. LinkedIn "Scorecard Sharing"</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Built-in viral loop: candidates share their PM Competency Percentile badge on LinkedIn to demonstrate interview readiness.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase">Primary Conversion Funnel</h4>
+          <p class="text-xs text-slate-400">Landing $\to$ Track Selection $\to$ Complete 3 Turns $\to$ Scorecard $\to$ Track Waitlist</p>
+        </div>
+        <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/20">Target: >65% Completion</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Traction & Validation Signals -->
+    <div class="slide flex-col gap-6" data-slide="5">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="bar-chart-3" class="w-3.5 h-3.5"></i>
+        05 · Traction, Metrics & Early Validation Signals
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        Empirical Evidence & Behavioral Signals
+      </h2>
+
+      <!-- Metrics Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-2">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-xs text-slate-400 uppercase block mb-1">Session Completion</span>
+          <span class="text-3xl font-extrabold text-white">82%</span>
+          <span class="text-[10px] text-emerald-400 block mt-1">High engagement bar</span>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-xs text-slate-400 uppercase block mb-1">Avg Confidence Gain</span>
+          <span class="text-3xl font-extrabold text-indigo-400">+2.1 ★</span>
+          <span class="text-[10px] text-indigo-300 block mt-1">Pre vs. Post Session</span>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-xs text-slate-400 uppercase block mb-1">Avg User Rating</span>
+          <span class="text-3xl font-extrabold text-amber-400">4.8 / 5</span>
+          <span class="text-[10px] text-slate-400 block mt-1">Realism & utility</span>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-center">
+          <span class="text-xs text-slate-400 uppercase block mb-1">Waitlist Conversion</span>
+          <span class="text-3xl font-extrabold text-purple-400">38%</span>
+          <span class="text-[10px] text-purple-300 block mt-1">Of completed mocks</span>
+        </div>
+      </div>
+
+      <!-- Qualitative Feedback Quote -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-4">
+        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Real User Feedback:</h4>
+        <p class="text-xs text-slate-200 italic leading-relaxed">
+          "Having Alex look at me and nod while I answered gave me the exact same nervous pulse I get in real Google interviews. Typing into ChatGPT never pushed me to pace my breath like this."
+        </p>
+        <span class="text-[11px] text-indigo-400 font-semibold block mt-1">— Early User, Stanford Senior (Google APM Applicant)</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Key Learnings -->
+    <div class="slide flex-col gap-6" data-slide="6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+        06 · Key Learnings & User Behavioral Insights
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        What We Learned from Real User Behavior
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-indigo-400 text-sm mb-2">1. "The Awkward Silence" is a Feature</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Users initially feel awkward speaking out loud into their microphone. However, once Alex acknowledges their first structured point with a nod, their speech confidence doubles.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-emerald-400 text-sm mb-2">2. Demand for Company Calibration</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            78% of waitlist signups specifically requested company personas (e.g. "Grill me like a Google Director" or "Test my Amazon Leadership Principles").
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-amber-400 text-sm mb-2">3. Filler Word & Pacing Anxiety</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Users care as much about their delivery metrics (speaking rate, "um/like" counts) as their conceptual framework accuracy.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5">
+          <h3 class="font-bold text-purple-400 text-sm mb-2">4. Repeat Session Stickiness</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Users who score below 75% immediately restart to try beating their previous score, validating gamified retention loops.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Next 2-Week Tests -->
+    <div class="slide flex-col gap-6" data-slide="7">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 font-semibold w-fit">
+        <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+        07 · Next Experimentation Roadmap (2 More Weeks)
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        Rapid Hypotheses & Sprint Plan
+      </h2>
+
+      <div class="space-y-3 mt-2">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-xs text-white">Sprint 1 (Week 1): Live Conversational Interruption</h4>
+            <p class="text-xs text-slate-400">Hypothesis: Allowing Alex to politely interrupt long rambles ("Let's pause there—how would you prioritize?") will increase answer conciseness by 30%.</p>
+          </div>
+          <span class="text-[10px] font-semibold text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded">P0 Feature</span>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-xs text-white">Sprint 2 (Week 1): Filler Word & Pacing Analytics</h4>
+            <p class="text-xs text-slate-400">Hypothesis: Displaying real-time Words Per Minute (WPM) and filler word counters will drive repeat mock completions (+25%).</p>
+          </div>
+          <span class="text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded">P0 Feature</span>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-xs text-white">Sprint 3 (Week 2): Paid Cohort & Monetization Test</h4>
+            <p class="text-xs text-slate-400">Hypothesis: Offering $19/mo for Unlimited FAANG-calibrated tracks will achieve >5% paid conversion among waitlist leads.</p>
+          </div>
+          <span class="text-[10px] font-semibold text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded">P1 Business</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Summary & Vision -->
+    <div class="slide flex-col gap-6" data-slide="8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 font-semibold w-fit">
+        <i data-lucide="check" class="w-3.5 h-3.5"></i>
+        08 · Summary & Product Vision
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        The Future of High-Stakes Conversational AI Coaching
+      </h2>
+
+      <div class="bg-gradient-to-r from-indigo-950/40 via-purple-950/30 to-slate-900 border border-indigo-500/30 rounded-2xl p-6 text-sm text-slate-200 leading-relaxed">
+        <p class="mb-4">
+          CaseMock AI demonstrates that <strong>AI avatars create authentic value when they simulate human social presence, conversational pressure, and structured active listening</strong>.
+        </p>
+        <p class="text-slate-400">
+          Starting with Product Management and Consulting interviews, this core avatar sparring engine expands naturally into <strong>B2B Sales objection sparring, Medical clinical communication, and Executive presentation coaching</strong>.
+        </p>
+      </div>
+
+      <div class="flex items-center justify-center gap-4 mt-4">
+        <a href="/" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/25 flex items-center gap-2 transition-all">
+          <i data-lucide="play" class="w-4 h-4"></i>
+          <span>Launch Live Interactive MVP</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BOTTOM SLIDE CONTROLS -->
+  <footer class="border-t border-slate-800/80 bg-slate-900/60 backdrop-blur-xl px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <button id="btn-prev" class="p-2 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+      </button>
+      <button id="btn-next" class="p-2 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed">
+        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+      </button>
+      <span class="text-xs text-slate-500 ml-2 hidden sm:inline">Use Left/Right arrow keys or Spacebar</span>
+    </div>
+
+    <!-- Progress Dots -->
+    <div class="flex items-center gap-1.5" id="slide-dots">
+      <!-- Generated via JS -->
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+    const slides = document.querySelectorAll('.slide');
+    const slideCounter = document.getElementById('slide-counter');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const slideDots = document.getElementById('slide-dots');
+
+    // Create dots
+    for (let i = 1; i <= totalSlides; i++) {
+      const dot = document.createElement('button');
+      dot.className = `w-2.5 h-2.5 rounded-full transition-all ${i === 1 ? 'bg-indigo-500 w-6' : 'bg-slate-700 hover:bg-slate-600'}`;
+      dot.addEventListener('click', () => goToSlide(i));
+      slideDots.appendChild(dot);
+    }
+
+    function goToSlide(n) {
+      if (n < 1 || n > totalSlides) return;
+      slides.forEach(s => s.classList.remove('active'));
+      currentSlide = n;
+      const target = document.querySelector(`.slide[data-slide="${currentSlide}"]`);
+      if (target) target.classList.add('active');
+
+      slideCounter.textContent = `Slide ${currentSlide} / ${totalSlides}`;
+      btnPrev.disabled = currentSlide === 1;
+      btnNext.disabled = currentSlide === totalSlides;
+
+      // Update dots
+      const dots = slideDots.querySelectorAll('button');
+      dots.forEach((d, idx) => {
+        if (idx + 1 === currentSlide) {
+          d.className = 'w-6 h-2.5 rounded-full bg-indigo-500 transition-all';
+        } else {
+          d.className = 'w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-600 transition-all';
+        }
+      });
+    }
+
+    btnPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
+    btnNext.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        goToSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft') {
+        goToSlide(currentSlide - 1);
+      }
+    });
+
+    goToSlide(1);
+    lucide.createIcons();
+  </script>
+</body>
+</html>

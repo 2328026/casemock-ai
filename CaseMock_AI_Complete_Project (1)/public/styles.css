@@ -1,0 +1,96 @@
+/* CaseMock AI Custom Styles & Animations */
+
+@keyframes avatarBreathing {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.008);
+  }
+}
+
+@keyframes avatarNodding {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(3.5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(2.5px) rotate(0.5deg);
+  }
+}
+
+@keyframes avatarThinking {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-3deg) translateY(-2px);
+  }
+}
+
+@keyframes avatarSpeakingMouth {
+  0%, 100% {
+    d: path("M 86 104 Q 100 108 114 104");
+  }
+  25% {
+    d: path("M 84 103 Q 100 114 116 103");
+  }
+  50% {
+    d: path("M 88 105 Q 100 109 112 105");
+  }
+  75% {
+    d: path("M 82 102 Q 100 118 118 102");
+  }
+}
+
+.avatar-idle #avatar-head {
+  animation: avatarBreathing 3.5s ease-in-out infinite;
+}
+
+.avatar-nodding #avatar-head {
+  animation: avatarNodding 1.3s ease-in-out infinite;
+}
+
+.avatar-thinking #avatar-head {
+  animation: avatarThinking 2.5s ease-in-out infinite;
+}
+
+.avatar-speaking #avatar-mouth {
+  animation: avatarSpeakingMouth 0.25s ease-in-out infinite;
+}
+
+.avatar-speaking #audio-waveform-bars {
+  opacity: 1 !important;
+}
+
+.avatar-speaking #avatar-aura {
+  background-color: rgba(99, 102, 241, 0.4) !important;
+  transform: scale(1.08);
+}
+
+.track-card.selected {
+  border-color: #6366f1 !important;
+  background-color: rgba(30, 41, 59, 0.9) !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}

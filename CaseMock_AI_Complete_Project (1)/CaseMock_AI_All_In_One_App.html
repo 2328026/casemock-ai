@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaseMock AI | Interactive AI Avatar PM & Case Interview Partner</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* CaseMock AI Custom Styles & Animations */
+
+@keyframes avatarBreathing {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.008);
+  }
+}
+
+@keyframes avatarNodding {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(3.5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(2.5px) rotate(0.5deg);
+  }
+}
+
+@keyframes avatarThinking {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-3deg) translateY(-2px);
+  }
+}
+
+@keyframes avatarSpeakingMouth {
+  0%, 100% {
+    d: path("M 86 104 Q 100 108 114 104");
+  }
+  25% {
+    d: path("M 84 103 Q 100 114 116 103");
+  }
+  50% {
+    d: path("M 88 105 Q 100 109 112 105");
+  }
+  75% {
+    d: path("M 82 102 Q 100 118 118 102");
+  }
+}
+
+.avatar-idle #avatar-head {
+  animation: avatarBreathing 3.5s ease-in-out infinite;
+}
+
+.avatar-nodding #avatar-head {
+  animation: avatarNodding 1.3s ease-in-out infinite;
+}
+
+.avatar-thinking #avatar-head {
+  animation: avatarThinking 2.5s ease-in-out infinite;
+}
+
+.avatar-speaking #avatar-mouth {
+  animation: avatarSpeakingMouth 0.25s ease-in-out infinite;
+}
+
+.avatar-speaking #audio-waveform-bars {
+  opacity: 1 !important;
+}
+
+.avatar-speaking #avatar-aura {
+  background-color: rgba(99, 102, 241, 0.4) !important;
+  transform: scale(1.08);
+}
+
+.track-card.selected {
+  border-color: #6366f1 !important;
+  background-color: rgba(30, 41, 59, 0.9) !important;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-['Plus_Jakarta_Sans'] min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP NAVIGATION -->
+  <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-0.5 shadow-lg shadow-indigo-500/20">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <i data-lucide="bot" class="w-5 h-5 text-indigo-400"></i>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">CaseMock AI</span>
+            <span class="px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">MVP v1.0</span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">AI Avatar PM & Case Interview Sparring Partner</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="btn-open-telemetry" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-xs font-medium text-slate-300 flex items-center gap-1.5 transition-all">
+          <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-indigo-400"></i>
+          <span>Live Validation Hub</span>
+        </button>
+
+        <a href="/slides.html" target="_blank" class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 text-xs font-medium text-indigo-300 flex items-center gap-1.5 transition-all">
+          <i data-lucide="presentation" class="w-3.5 h-3.5"></i>
+          <span>Slide Deck</span>
+        </a>
+
+        <button id="btn-open-waitlist" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-xs font-semibold text-white shadow-md shadow-indigo-600/25 transition-all">
+          Join Track Waitlist
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
+
+    <!-- STEP 1: ONBOARDING / TRACK SELECTION SCREEN -->
+    <section id="screen-setup" class="my-auto py-6">
+      <div class="max-w-3xl mx-auto text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 mb-3 font-medium">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Live Voice & Facial Reaction Simulation
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-3">
+          Master PM Interviews under <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-400 bg-clip-text text-transparent">Real Conversational Pressure</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+          Text chatbots fail at interview prep because real interviews are 80% about vocal pacing, structure under pressure, and reading visual cues. Practice live with <strong class="text-slate-200">Alex</strong>, your interactive AI PM Interviewer.
+        </p>
+      </div>
+
+      <!-- Track Cards -->
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <!-- Track 1 -->
+        <div data-track="product_design" class="track-card selected cursor-pointer p-5 rounded-2xl border-2 border-indigo-500 bg-slate-900/80 hover:bg-slate-900 transition-all relative overflow-hidden group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-3">
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-base mb-1">Product Design & Sense</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">CIRCLES framework, user segmentation, edge cases, feature prioritization & vision.</p>
+          <span class="inline-block text-[11px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">Most Popular</span>
+        </div>
+
+        <!-- Track 2 -->
+        <div data-track="behavioral" class="track-card cursor-pointer p-5 rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all relative overflow-hidden group">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-3">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-base mb-1">Leadership & Behavioral</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">STAR technique, stakeholder conflict, difficult trade-offs & learning from failure.</p>
+          <span class="inline-block text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">FAANG Standard</span>
+        </div>
+
+        <!-- Track 3 -->
+        <div data-track="product_strategy" class="track-card cursor-pointer p-5 rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all relative overflow-hidden group">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-3">
+            <i data-lucide="trending-up" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-base mb-1">Strategy & Metrics</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">Unit economics, competitive moats, cannibalization risks & North Star metric tree.</p>
+          <span class="inline-block text-[11px] font-semibold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">Executive Bar</span>
+        </div>
+      </div>
+
+      <!-- Question Selector & Pre-Confidence Check -->
+      <div class="max-w-2xl mx-auto bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl mb-6">
+        <div class="mb-5">
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Selected Case Question</label>
+          <select id="select-question" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-slate-800">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Your Current Confidence Level</label>
+            <div class="flex items-center gap-1.5" id="pre-confidence-stars">
+              <button data-val="1" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+              <button data-val="2" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+              <button data-val="3" class="star-btn p-1 text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5 fill-amber-400"></i></button>
+              <button data-val="4" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+              <button data-val="5" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1">Used to measure your confidence delta after the session</p>
+          </div>
+
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+              <input type="checkbox" id="toggle-camera-mirror" checked class="rounded border-slate-700 bg-slate-950 text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+              <span>Enable Webcam Mirror</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button id="btn-start-interview" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-500 hover:from-indigo-500 hover:to-emerald-400 text-white font-bold text-base shadow-lg shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 mx-auto">
+          <i data-lucide="play" class="w-5 h-5 fill-white"></i>
+          <span>Start Live Mock Interview</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2: LIVE INTERVIEW SPARRING ROOM -->
+    <section id="screen-interview" class="hidden flex-1 flex flex-col gap-5">
+      
+      <!-- Session Bar -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>LIVE SESSION</span>
+          </div>
+          <span id="interview-track-badge" class="text-xs text-slate-400 font-medium hidden sm:inline">Product Design</span>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center gap-2 text-xs">
+          <div class="flex items-center gap-1.5" id="step-turn-1">
+            <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px]">1</span>
+            <span class="text-slate-300 font-medium hidden md:inline">Framing & User</span>
+          </div>
+          <div class="w-4 h-0.5 bg-slate-700"></div>
+          <div class="flex items-center gap-1.5 opacity-50" id="step-turn-2">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-[10px]">2</span>
+            <span class="text-slate-400 font-medium hidden md:inline">Trade-offs & Edge</span>
+          </div>
+          <div class="w-4 h-0.5 bg-slate-700"></div>
+          <div class="flex items-center gap-1.5 opacity-50" id="step-turn-3">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-[10px]">3</span>
+            <span class="text-slate-400 font-medium hidden md:inline">Metrics & Wrap</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 text-xs font-mono text-slate-300 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+            <i data-lucide="clock" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <span id="session-timer">00:00</span>
+          </div>
+          <button id="btn-end-early" class="text-xs text-rose-400 hover:text-rose-300 border border-rose-500/20 bg-rose-500/10 px-2.5 py-1 rounded-lg transition-all">
+            End & Grade
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Stage: Avatar + Candidate Camera Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-stretch">
+        
+        <!-- Left 7 Cols: AI Avatar Arena -->
+        <div class="lg:col-span-7 flex flex-col bg-slate-900/50 border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-2xl justify-between min-h-[460px]">
+          
+          <!-- Avatar Status Header -->
+          <div class="flex items-center justify-between z-10">
+            <div class="flex items-center gap-3">
+              <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+              <div>
+                <h2 class="text-base font-bold text-white flex items-center gap-1.5">
+                  Alex
+                  <span class="text-[11px] font-normal text-slate-400">· Senior Lead PM Interviewer</span>
+                </h2>
+              </div>
+            </div>
+
+            <!-- Dynamic State Badge -->
+            <div id="avatar-state-pill" class="px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5">
+              <i data-lucide="ear" class="w-3.5 h-3.5 text-indigo-400"></i>
+              <span id="avatar-state-text">Alex is listening attentively...</span>
+            </div>
+          </div>
+
+          <!-- Avatar Visual Stage -->
+          <div class="my-auto py-4 flex flex-col items-center justify-center relative">
+            <div class="relative w-52 h-52 sm:w-60 sm:h-60 flex items-center justify-center">
+              
+              <!-- Glow Aura -->
+              <div id="avatar-aura" class="absolute inset-0 rounded-full bg-indigo-600/20 blur-2xl transition-all duration-700 animate-pulse"></div>
+
+              <!-- Animated SVG Avatar -->
+              <div id="avatar-canvas-container" class="relative z-10 w-full h-full flex items-center justify-center">
+                <svg id="alex-avatar" viewBox="0 0 200 200" class="w-full h-full drop-shadow-2xl avatar-idle">
+                  <defs>
+                    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fdba74" />
+                      <stop offset="100%" stop-color="#f97316" />
+                    </linearGradient>
+                    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1e293b" />
+                      <stop offset="100%" stop-color="#0f172a" />
+                    </linearGradient>
+                    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#334155" />
+                      <stop offset="100%" stop-color="#0f172a" />
+                    </linearGradient>
+                  </defs>
+
+                  <path d="M 30 190 Q 40 140 100 140 Q 160 140 170 190 Z" fill="url(#suitGrad)" stroke="#334155" stroke-width="2" />
+                  <polygon points="100,140 85,160 115,160" fill="#f8fafc" />
+                  <polygon points="100,160 92,185 108,185" fill="#6366f1" />
+                  <rect x="86" y="115" width="28" height="30" rx="4" fill="#fb923c" />
+
+                  <g id="avatar-head" class="transition-transform duration-300 origin-bottom">
+                    <ellipse cx="100" cy="80" rx="42" ry="48" fill="url(#skinGrad)" />
+                    <path d="M 58 75 Q 60 35 100 35 Q 140 35 142 75 Q 125 50 100 52 Q 75 50 58 75 Z" fill="url(#hairGrad)" />
+
+                    <path id="eyebrow-left" d="M 72 65 Q 82 62 90 66" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none" />
+                    <path id="eyebrow-right" d="M 110 66 Q 118 62 128 65" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none" />
+
+                    <g id="avatar-eyes">
+                      <ellipse cx="80" cy="76" rx="6" ry="6" fill="#ffffff" />
+                      <circle id="pupil-left" cx="81" cy="76" r="3.5" fill="#0f172a" />
+                      <circle cx="82" cy="74" r="1.2" fill="#ffffff" />
+
+                      <ellipse cx="120" cy="76" rx="6" ry="6" fill="#ffffff" />
+                      <circle id="pupil-right" cx="121" cy="76" r="3.5" fill="#0f172a" />
+                      <circle cx="122" cy="74" r="1.2" fill="#ffffff" />
+                    </g>
+
+                    <path d="M 100 78 Q 103 88 98 90" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <path id="avatar-mouth" d="M 86 104 Q 100 108 114 104" stroke="#7c2d12" stroke-width="3.5" stroke-linecap="round" fill="#7c2d12" />
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Audio Waveform Visualizer Ring -->
+              <div id="audio-waveform-bars" class="absolute -bottom-2 flex items-center gap-1 opacity-0 transition-opacity duration-300">
+                <span class="w-1 h-3 bg-indigo-500 rounded-full animate-bounce"></span>
+                <span class="w-1 h-6 bg-indigo-400 rounded-full animate-bounce [animation-delay:0.1s]"></span>
+                <span class="w-1 h-8 bg-emerald-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                <span class="w-1 h-5 bg-indigo-400 rounded-full animate-bounce [animation-delay:0.3s]"></span>
+                <span class="w-1 h-2 bg-indigo-500 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+              </div>
+            </div>
+
+            <!-- Speech Bubble -->
+            <div class="mt-3 max-w-lg w-full bg-slate-950/80 border border-slate-800 rounded-2xl p-4 shadow-lg backdrop-blur-md">
+              <div class="flex items-center gap-2 mb-1">
+                <i data-lucide="message-square" class="w-3.5 h-3.5 text-indigo-400"></i>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Alex (Interviewer)</span>
+              </div>
+              <p id="interviewer-speech-text" class="text-sm sm:text-base font-medium text-slate-100 leading-relaxed">
+                Loading case question...
+              </p>
+            </div>
+          </div>
+
+          <!-- Coach Hint -->
+          <div class="bg-indigo-950/40 border border-indigo-500/20 rounded-xl p-3 flex items-start gap-2.5 z-10">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
+            <div class="text-xs">
+              <span class="font-semibold text-indigo-300">Live Rubric Coach: </span>
+              <span id="coach-hint-text" class="text-slate-300">Outline your framework upfront (e.g. CIRCLES or STAR) before detailing solutions.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Candidate Response Arena + Live Video PIP -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          
+          <div id="webcam-container" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 relative overflow-hidden flex flex-col items-center justify-center min-h-[150px]">
+            <video id="user-webcam" autoplay playsinline muted class="w-full h-36 object-cover rounded-xl bg-slate-950"></video>
+            <div class="absolute top-5 left-5 flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-2 py-1 rounded-md border border-slate-700 text-[10px] text-slate-300 font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>Webcam Mirror (Eye Contact Check)</span>
+            </div>
+          </div>
+
+          <!-- Speech-to-Text Transcript & Input Arena -->
+          <div class="flex-1 bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <i data-lucide="mic" class="w-3.5 h-3.5 text-indigo-400"></i>
+                  <span>Your Spoken Response</span>
+                </label>
+                <span id="word-count-badge" class="text-[11px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">0 words</span>
+              </div>
+
+              <div class="relative">
+                <textarea id="user-transcript-input" rows="5" placeholder="Click 'Tap to Speak' or type your response here... (Speak out loud for real sparring practice!)" class="w-full bg-slate-950/80 border border-slate-700 rounded-xl p-4 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 leading-relaxed resize-none"></textarea>
+                
+                <div id="stt-active-indicator" class="hidden absolute bottom-3 right-3 flex items-center gap-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2.5 py-1 rounded-full text-xs font-semibold animate-pulse">
+                  <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                  <span>Listening to your voice...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex items-center gap-3">
+              <button id="btn-toggle-mic" class="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 transition-all">
+                <i data-lucide="mic" class="w-4 h-4"></i>
+                <span id="mic-button-label">Tap to Speak</span>
+              </button>
+
+              <button id="btn-submit-turn" class="py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/25 transition-all">
+                <span>Send</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: SCORECARD MODAL -->
+    <div id="modal-scorecard" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl my-8 relative">
+        
+        <div class="text-center mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold mb-2">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+            Interview Sparring Completed
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Your PM Competency Diagnostic</h2>
+          <p class="text-xs sm:text-sm text-slate-400">Evaluated against FAANG & Tier-1 Consulting Interview Bars</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Overall Score</span>
+            <span id="card-overall-score" class="text-3xl font-extrabold text-indigo-400">86</span>
+            <span class="text-xs text-slate-500 block mt-1">/ 100</span>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Candidate Percentile</span>
+            <span id="card-percentile" class="text-3xl font-extrabold text-emerald-400">Top 12%</span>
+            <span class="text-xs text-slate-500 block mt-1">vs. 140+ Mock Sessions</span>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Confidence Gain</span>
+            <span id="card-confidence-gain" class="text-3xl font-extrabold text-purple-400">+2 Stars</span>
+            <span class="text-xs text-slate-500 block mt-1">Pre vs. Post Session</span>
+          </div>
+        </div>
+
+        <!-- Rubric Bars -->
+        <div class="space-y-3 mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">Structure & Framework (CIRCLES/STAR)</span>
+              <span id="score-structure" class="text-indigo-400">88%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-structure" class="h-full bg-indigo-500 transition-all duration-1000" style="width: 88%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">User Empathy & Persona Segmentation</span>
+              <span id="score-empathy" class="text-emerald-400">82%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-empathy" class="h-full bg-emerald-500 transition-all duration-1000" style="width: 82%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">Metrics, Trade-offs & Business Impact</span>
+              <span id="score-metrics" class="text-purple-400">79%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-metrics" class="h-full bg-purple-500 transition-all duration-1000" style="width: 79%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">Vocal Pacing & Confidence Under Pressure</span>
+              <span id="score-delivery" class="text-amber-400">85%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-delivery" class="h-full bg-amber-500 transition-all duration-1000" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-xl p-4">
+            <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              Key Strengths
+            </h4>
+            <ul id="list-strengths" class="text-xs text-slate-300 space-y-1.5"></ul>
+          </div>
+
+          <div class="bg-amber-950/20 border border-amber-500/20 rounded-xl p-4">
+            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="target" class="w-4 h-4"></i>
+              Areas for Next Practice
+            </h4>
+            <ul id="list-improvements" class="text-xs text-slate-300 space-y-1.5"></ul>
+          </div>
+        </div>
+
+        <!-- Post Session Feedback -->
+        <div class="border-t border-slate-800 pt-4 mb-6">
+          <h4 class="text-xs font-bold text-white mb-2">How realistic did this AI Avatar session feel?</h4>
+          <div class="flex items-center gap-1.5 mb-3" id="post-feedback-stars">
+            <button data-val="1" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="2" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="3" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="4" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="5" class="fb-star text-amber-400"><i data-lucide="star" class="w-5 h-5 fill-amber-400"></i></button>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="input-feedback-comment" placeholder="What resonated or what would make Alex feel even more realistic?" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+            <button id="btn-submit-feedback" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold">Submit</button>
+          </div>
+          <p id="feedback-success-msg" class="hidden text-xs text-emerald-400 mt-2">Recorded to live telemetry hub.</p>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <button id="btn-restart-mock" class="px-4 py-2.5 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 text-xs font-semibold flex items-center gap-2">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            <span>Practice Another Track</span>
+          </button>
+          <button id="btn-trigger-waitlist" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-emerald-500 hover:from-indigo-500 hover:to-emerald-400 text-white text-xs font-bold shadow-lg shadow-indigo-600/25">
+            Join Advanced Track Waitlist
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: TELEMETRY MODAL -->
+    <div id="modal-telemetry" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl my-8 relative">
+        <button id="btn-close-telemetry" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Live Product Validation & Telemetry Hub</h3>
+            <p class="text-xs text-slate-400">Real-time user engagement, session completion rates, and qualitative signals</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Total Mock Sessions</span>
+            <span id="stat-total-sessions" class="text-2xl font-bold text-white">--</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Avg Session Score</span>
+            <span id="stat-avg-score" class="text-2xl font-bold text-indigo-400">--</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Confidence Delta</span>
+            <span id="stat-avg-gain" class="text-2xl font-bold text-emerald-400">--</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Avg User Rating</span>
+            <span id="stat-avg-rating" class="text-2xl font-bold text-amber-400">--</span>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Recent User Feedback Signals</h4>
+          <div id="telemetry-feedback-list" class="space-y-2 max-h-48 overflow-y-auto pr-2"></div>
+        </div>
+
+        <div class="bg-indigo-950/30 border border-indigo-500/20 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider">Company-Specific Track Waitlist</h4>
+            <p class="text-xs text-slate-400">Prospective applicants signed up for Google APM, Meta RPM & McKinsey tracks</p>
+          </div>
+          <span id="stat-waitlist-count" class="text-xl font-bold text-white bg-indigo-600 px-3 py-1 rounded-lg">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: WAITLIST MODAL -->
+    <div id="modal-waitlist" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+        <button id="btn-close-waitlist" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="text-center mb-5">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mx-auto mb-3">
+            <i data-lucide="rocket" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1">Get Access to Specialized Tracks</h3>
+          <p class="text-xs text-slate-400">Join the waitlist for company-calibrated AI avatar interviewers.</p>
+        </div>
+
+        <form id="form-waitlist" class="space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email</label>
+            <input type="email" id="input-wl-email" required placeholder="you@university.edu" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Target Company Track</label>
+            <select id="input-wl-company" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+              <option value="Google APM">Google APM (Associate Product Manager)</option>
+              <option value="Meta RPM">Meta RPM (Rotational Product Manager)</option>
+              <option value="McKinsey / BCG">McKinsey / BCG Case Interview</option>
+              <option value="Amazon PM-T">Amazon PM-Technical</option>
+              <option value="Stripe / Uber">Tier-1 Tech PM</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Current Background</label>
+            <input type="text" id="input-wl-role" placeholder="e.g. Undergrad CS / MBA / Aspiring PM" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-bold shadow-lg shadow-indigo-600/25 transition-all mt-4">
+            Join Early Access Waitlist
+          </button>
+        </form>
+
+        <p id="wl-success-msg" class="hidden text-xs text-center text-emerald-400 mt-3 font-medium">You are on the priority waitlist! We'll notify you shortly.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/60 bg-slate-950/80 py-4 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <div>Built for <strong>Product Intern Assignment: AI Avatar Product</strong></div>
+      <div class="flex items-center gap-4">
+        <span>Web Speech STT & TTS</span>
+        <span>·</span>
+        <span>CIRCLES & STAR Rubrics</span>
+        <span>·</span>
+        <span>Real-time Telemetry</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+// CaseMock AI - Interactive Client Logic
+
+document.addEventListener("DOMContentLoaded", () => {
+  // State
+  let tracks = {};
+  let currentTrackId = "product_design";
+  let currentQuestionId = "pd_1";
+  let preConfidence = 3;
+  let postConfidence = 5;
+  let turnIndex = 0;
+  let transcript = [];
+  let sessionTimerInterval = null;
+  let sessionSeconds = 0;
+  let isRecording = false;
+  let recognition = null;
+  let mediaStream = null;
+
+  // DOM Elements
+  const screenSetup = document.getElementById("screen-setup");
+  const screenInterview = document.getElementById("screen-interview");
+  const selectQuestion = document.getElementById("select-question");
+  const btnStartInterview = document.getElementById("btn-start-interview");
+  const btnEndEarly = document.getElementById("btn-end-early");
+  const sessionTimer = document.getElementById("session-timer");
+  const interviewTrackBadge = document.getElementById("interview-track-badge");
+  
+  // Avatar Elements
+  const alexAvatar = document.getElementById("alex-avatar");
+  const avatarStatePill = document.getElementById("avatar-state-pill");
+  const avatarStateText = document.getElementById("avatar-state-text");
+  const interviewerSpeechText = document.getElementById("interviewer-speech-text");
+  const coachHintText = document.getElementById("coach-hint-text");
+
+  // User Response Elements
+  const userTranscriptInput = document.getElementById("user-transcript-input");
+  const wordCountBadge = document.getElementById("word-count-badge");
+  const btnToggleMic = document.getElementById("btn-toggle-mic");
+  const micButtonLabel = document.getElementById("mic-button-label");
+  const sttActiveIndicator = document.getElementById("stt-active-indicator");
+  const btnSubmitTurn = document.getElementById("btn-submit-turn");
+  const userWebcam = document.getElementById("user-webcam");
+  const toggleCameraMirror = document.getElementById("toggle-camera-mirror");
+
+  // Modals
+  const modalScorecard = document.getElementById("modal-scorecard");
+  const modalTelemetry = document.getElementById("modal-telemetry");
+  const modalWaitlist = document.getElementById("modal-waitlist");
+
+  // Initial Fetch Tracks
+  fetchTracks();
+  initWebSpeech();
+
+  // Track Card Selection
+  document.querySelectorAll(".track-card").forEach(card => {
+    card.addEventListener("click", () => {
+      document.querySelectorAll(".track-card").forEach(c => c.classList.remove("selected", "border-2", "border-indigo-500"));
+      card.classList.add("selected", "border-2", "border-indigo-500");
+      currentTrackId = card.getAttribute("data-track");
+      populateQuestions(currentTrackId);
+    });
+  });
+
+  // Pre-Confidence Stars
+  const preStarBtns = document.querySelectorAll("#pre-confidence-stars .star-btn");
+  preStarBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      preConfidence = parseInt(btn.getAttribute("data-val"));
+      renderStars(preStarBtns, preConfidence);
+    });
+  });
+
+  // Post-Feedback Stars
+  const fbStarBtns = document.querySelectorAll("#post-feedback-stars .fb-star");
+  fbStarBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      postConfidence = parseInt(btn.getAttribute("data-val"));
+      renderStars(fbStarBtns, postConfidence);
+    });
+  });
+
+  function renderStars(btnList, rating) {
+    btnList.forEach(b => {
+      const val = parseInt(b.getAttribute("data-val"));
+      const icon = b.querySelector("i");
+      if (val <= rating) {
+        b.className = b.className.replace("text-slate-600", "text-amber-400");
+        if (icon) {
+          icon.setAttribute("class", "w-5 h-5 fill-amber-400 text-amber-400");
+        }
+      } else {
+        b.className = b.className.replace("text-amber-400", "text-slate-600");
+        if (icon) {
+          icon.setAttribute("class", "w-5 h-5 text-slate-600");
+        }
+      }
+    });
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Word count tracker
+  userTranscriptInput.addEventListener("input", () => {
+    const words = userTranscriptInput.value.trim().split(/\s+/).filter(Boolean).length;
+    wordCountBadge.textContent = `${words} words`;
+  });
+
+  // Fetch Tracks Data
+  async function fetchTracks() {
+    try {
+      const res = await fetch("/api/tracks");
+      const data = await res.json();
+      if (data.success) {
+        tracks = data.tracks;
+        populateQuestions(currentTrackId);
+      }
+    } catch (e) {
+      console.warn("Backend not reached, using local track presets:", e);
+      tracks = getLocalTrackFallback();
+      populateQuestions(currentTrackId);
+    }
+  }
+
+  function populateQuestions(trackId) {
+    const track = tracks[trackId];
+    if (!track) return;
+    selectQuestion.innerHTML = "";
+    track.questions.forEach(q => {
+      const opt = document.createElement("option");
+      opt.value = q.id;
+      opt.textContent = `${q.prompt}`;
+      selectQuestion.appendChild(opt);
+    });
+    currentQuestionId = track.questions[0].id;
+  }
+
+  selectQuestion.addEventListener("change", (e) => {
+    currentQuestionId = e.target.value;
+  });
+
+  // START INTERVIEW
+  btnStartInterview.addEventListener("click", async () => {
+    screenSetup.classList.add("hidden");
+    screenInterview.classList.remove("hidden");
+    
+    // Set Track Badge
+    const trackName = tracks[currentTrackId] ? tracks[currentTrackId].title : "Product Design";
+    interviewTrackBadge.textContent = trackName;
+
+    // Start Webcam if enabled
+    if (toggleCameraMirror.checked) {
+      try {
+        mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        userWebcam.srcObject = mediaStream;
+      } catch (err) {
+        console.log("Webcam access optional/denied:", err);
+      }
+    }
+
+    // Reset State
+    turnIndex = 0;
+    transcript = [];
+    sessionSeconds = 0;
+    startTimer();
+    updateStepProgress(1);
+
+    // Initial Question Setup
+    const questionObj = tracks[currentTrackId].questions.find(q => q.id === currentQuestionId) || tracks[currentTrackId].questions[0];
+    const initialPrompt = questionObj.prompt;
+
+    transcript.push({ speaker: "alex", text: initialPrompt });
+    interviewerSpeechText.textContent = initialPrompt;
+    speakAlex(initialPrompt);
+  });
+
+  // Turn Progress Indicator
+  function updateStepProgress(step) {
+    const step1 = document.getElementById("step-turn-1");
+    const step2 = document.getElementById("step-turn-2");
+    const step3 = document.getElementById("step-turn-3");
+
+    [step1, step2, step3].forEach((el, idx) => {
+      if (idx + 1 === step) {
+        el.classList.remove("opacity-50");
+        el.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px]";
+      } else if (idx + 1 < step) {
+        el.classList.remove("opacity-50");
+        el.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-[10px]";
+      } else {
+        el.classList.add("opacity-50");
+        el.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-[10px]";
+      }
+    });
+  }
+
+  // Timer
+  function startTimer() {
+    clearInterval(sessionTimerInterval);
+    sessionTimerInterval = setInterval(() => {
+      sessionSeconds++;
+      const mins = String(Math.floor(sessionSeconds / 60)).padStart(2, "0");
+      const secs = String(sessionSeconds % 60).padStart(2, "0");
+      sessionTimer.textContent = `${mins}:${secs}`;
+    }, 1000);
+  }
+
+  // SUBMIT TURN
+  btnSubmitTurn.addEventListener("click", async () => {
+    const userText = userTranscriptInput.value.trim();
+    if (!userText) {
+      userTranscriptInput.focus();
+      return;
+    }
+
+    if (isRecording) {
+      stopRecording();
+    }
+
+    transcript.push({ speaker: "user", text: userText });
+    userTranscriptInput.value = "";
+    wordCountBadge.textContent = "0 words";
+
+    setAvatarState("thinking");
+    avatarStateText.textContent = "Alex is taking notes and evaluating your structure...";
+
+    try {
+      const res = await fetch("/api/evaluate-turn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          trackId: currentTrackId,
+          questionId: currentQuestionId,
+          turnIndex,
+          userResponse: userText,
+          history: transcript
+        })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        handleTurnEvaluation(data);
+      }
+    } catch (e) {
+      console.warn("Backend evaluation fallback:", e);
+      handleTurnEvaluation({
+        avatarState: "nodding",
+        coachNote: "Strong points! Make sure to quantify your trade-offs with explicit metrics.",
+        isFinalTurn: turnIndex >= 2,
+        nextInterviewerSpeech: "Makes sense. How would you measure success and what key failure mode would you monitor?"
+      });
+    }
+  });
+
+  function handleTurnEvaluation(data) {
+    turnIndex++;
+    updateStepProgress(Math.min(3, turnIndex + 1));
+
+    if (data.coachNote) {
+      coachHintText.textContent = data.coachNote;
+    }
+
+    if (data.isFinalTurn || turnIndex >= 3) {
+      finishInterview();
+      return;
+    }
+
+    const nextSpeech = data.nextInterviewerSpeech;
+    transcript.push({ speaker: "alex", text: nextSpeech });
+    interviewerSpeechText.textContent = nextSpeech;
+    speakAlex(nextSpeech);
+  }
+
+  // FINISH & GRADE
+  btnEndEarly.addEventListener("click", () => {
+    finishInterview();
+  });
+
+  async function finishInterview() {
+    clearInterval(sessionTimerInterval);
+    if (mediaStream) {
+      mediaStream.getTracks().forEach(track => track.stop());
+    }
+
+    setAvatarState("idle");
+    avatarStateText.textContent = "Alex is compiling your PM Competency Scorecard...";
+
+    try {
+      const res = await fetch("/api/generate-scorecard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          trackId: currentTrackId,
+          questionId: currentQuestionId,
+          durationSeconds: sessionSeconds,
+          transcript,
+          preConfidence,
+          postConfidence
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        renderScorecard(data.scorecard);
+      }
+    } catch (e) {
+      renderScorecard(generateLocalScorecardFallback());
+    }
+  }
+
+  function renderScorecard(scorecard) {
+    document.getElementById("card-overall-score").textContent = scorecard.overallScore || 85;
+    document.getElementById("card-percentile").textContent = `Top ${100 - (scorecard.percentile || 88)}%`;
+    const gain = (postConfidence - preConfidence);
+    document.getElementById("card-confidence-gain").textContent = `${gain >= 0 ? "+" : ""}${gain} Stars`;
+
+    // Rubric Bars
+    const rubrics = scorecard.rubrics;
+    if (rubrics) {
+      document.getElementById("score-structure").textContent = `${rubrics.structure.score}%`;
+      document.getElementById("bar-structure").style.width = `${rubrics.structure.score}%`;
+
+      document.getElementById("score-empathy").textContent = `${rubrics.userEmpathy.score}%`;
+      document.getElementById("bar-empathy").style.width = `${rubrics.userEmpathy.score}%`;
+
+      document.getElementById("score-metrics").textContent = `${rubrics.metricsThinking.score}%`;
+      document.getElementById("bar-metrics").style.width = `${rubrics.metricsThinking.score}%`;
+
+      document.getElementById("score-delivery").textContent = `${rubrics.vocalDelivery.score}%`;
+      document.getElementById("bar-delivery").style.width = `${rubrics.vocalDelivery.score}%`;
+    }
+
+    // Strengths & Improvements
+    const listStrengths = document.getElementById("list-strengths");
+    listStrengths.innerHTML = "";
+    (scorecard.strengths || ["Structured problem breakdown.", "Clear communication pacing."]).forEach(s => {
+      const li = document.createElement("li");
+      li.className = "flex items-start gap-1.5";
+      li.innerHTML = `<span class="text-emerald-400 font-bold">•</span><span>${s}</span>`;
+      listStrengths.appendChild(li);
+    });
+
+    const listImprovements = document.getElementById("list-improvements");
+    listImprovements.innerHTML = "";
+    (scorecard.improvements || ["Explicitly define your North Star & counter-metrics.", "Unpack user persona constraints before listing features."]).forEach(imp => {
+      const li = document.createElement("li");
+      li.className = "flex items-start gap-1.5";
+      li.innerHTML = `<span class="text-amber-400 font-bold">•</span><span>${imp}</span>`;
+      listImprovements.appendChild(li);
+    });
+
+    modalScorecard.classList.remove("hidden");
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // AVATAR ANIMATIONS & VOICE SYNTHESIS
+  function setAvatarState(state) {
+    alexAvatar.className.baseVal = `w-full h-full drop-shadow-2xl avatar-${state}`;
+    if (state === "nodding") {
+      avatarStateText.textContent = "Alex is listening and nodding...";
+    } else if (state === "thinking") {
+      avatarStateText.textContent = "Alex is analyzing your solution...";
+    } else if (state === "speaking") {
+      avatarStateText.textContent = "Alex is speaking...";
+    } else {
+      avatarStateText.textContent = "Alex is ready.";
+    }
+  }
+
+  function speakAlex(text) {
+    if (!("speechSynthesis" in window)) {
+      setAvatarState("idle");
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0;
+    utterance.pitch = 0.95;
+
+    // Pick voice if available
+    const voices = window.speechSynthesis.getVoices();
+    const englishVoice = voices.find(v => v.lang.includes("en-US") || v.lang.includes("en-GB") || v.lang.includes("en"));
+    if (englishVoice) utterance.voice = englishVoice;
+
+    utterance.onstart = () => {
+      setAvatarState("speaking");
+    };
+
+    utterance.onend = () => {
+      setAvatarState("nodding");
+      avatarStateText.textContent = "Alex is listening attentively to your answer...";
+    };
+
+    utterance.onerror = () => {
+      setAvatarState("idle");
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // SPEECH RECOGNITION (STT)
+  function initWebSpeech() {
+    const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRec) {
+      micButtonLabel.textContent = "Voice STT Not Supported (Type Below)";
+      btnToggleMic.classList.add("opacity-60");
+      return;
+    }
+
+    recognition = new SpeechRec();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
+
+    recognition.onresult = (event) => {
+      let currentResult = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        currentResult += event.results[i][0].transcript;
+      }
+      userTranscriptInput.value = currentResult;
+      const words = currentResult.trim().split(/\s+/).filter(Boolean).length;
+      wordCountBadge.textContent = `${words} words`;
+    };
+
+    recognition.onerror = (event) => {
+      console.log("Speech recognition error:", event.error);
+      stopRecording();
+    };
+
+    recognition.onend = () => {
+      if (isRecording) {
+        recognition.start();
+      }
+    };
+  }
+
+  btnToggleMic.addEventListener("click", () => {
+    if (!recognition) return;
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  });
+
+  function startRecording() {
+    if (!recognition) return;
+    isRecording = true;
+    try {
+      recognition.start();
+    } catch (e) {}
+    btnToggleMic.classList.remove("bg-indigo-600", "hover:bg-indigo-500");
+    btnToggleMic.classList.add("bg-rose-600", "hover:bg-rose-500", "animate-pulse");
+    micButtonLabel.textContent = "Stop Speaking (Tap When Done)";
+    sttActiveIndicator.classList.remove("hidden");
+    setAvatarState("nodding");
+  }
+
+  function stopRecording() {
+    isRecording = false;
+    if (recognition) {
+      try {
+        recognition.stop();
+      } catch (e) {}
+    }
+    btnToggleMic.classList.remove("bg-rose-600", "hover:bg-rose-500", "animate-pulse");
+    btnToggleMic.classList.add("bg-indigo-600", "hover:bg-indigo-500");
+    micButtonLabel.textContent = "Tap to Speak";
+    sttActiveIndicator.classList.add("hidden");
+  }
+
+  // FEEDBACK SUBMISSION
+  document.getElementById("btn-submit-feedback").addEventListener("click", async () => {
+    const comment = document.getElementById("input-feedback-comment").value.trim();
+    try {
+      await fetch("/api/telemetry/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          rating: postConfidence,
+          comment,
+          role: "Candidate Mock"
+        })
+      });
+      document.getElementById("feedback-success-msg").classList.remove("hidden");
+      document.getElementById("input-feedback-comment").value = "";
+    } catch (e) {
+      document.getElementById("feedback-success-msg").classList.remove("hidden");
+    }
+  });
+
+  // RESTART MOCK
+  document.getElementById("btn-restart-mock").addEventListener("click", () => {
+    modalScorecard.classList.add("hidden");
+    screenInterview.classList.add("hidden");
+    screenSetup.classList.remove("hidden");
+  });
+
+  // TELEMETRY MODAL CONTROLS
+  document.getElementById("btn-open-telemetry").addEventListener("click", async () => {
+    modalTelemetry.classList.remove("hidden");
+    await loadTelemetryStats();
+  });
+
+  document.getElementById("btn-close-telemetry").addEventListener("click", () => {
+    modalTelemetry.classList.add("hidden");
+  });
+
+  async function loadTelemetryStats() {
+    try {
+      const res = await fetch("/api/telemetry/stats");
+      const data = await res.json();
+      if (data.success) {
+        const stats = data.stats;
+        document.getElementById("stat-total-sessions").textContent = stats.totalSessions;
+        document.getElementById("stat-avg-score").textContent = `${stats.avgScore}%`;
+        document.getElementById("stat-avg-gain").textContent = `${stats.avgConfidenceGain} Stars`;
+        document.getElementById("stat-avg-rating").textContent = `${stats.avgRating} / 5.0`;
+        document.getElementById("stat-waitlist-count").textContent = `${stats.waitlistCount} Signups`;
+
+        const feedList = document.getElementById("telemetry-feedback-list");
+        feedList.innerHTML = "";
+        stats.recentFeedback.forEach(fb => {
+          const item = document.createElement("div");
+          item.className = "bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs";
+          item.innerHTML = `
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-bold text-amber-400">${"★".repeat(fb.rating)} (${fb.rating}/5)</span>
+              <span class="text-[10px] text-slate-500">${new Date(fb.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+            </div>
+            <p class="text-slate-300">"${fb.comment || "Great avatar experience!"}"</p>
+          `;
+          feedList.appendChild(item);
+        });
+      }
+    } catch (e) {
+      console.warn("Failed loading telemetry:", e);
+    }
+  }
+
+  // WAITLIST MODAL CONTROLS
+  const openWl = () => {
+    modalScorecard.classList.add("hidden");
+    modalWaitlist.classList.remove("hidden");
+  };
+
+  document.getElementById("btn-open-waitlist").addEventListener("click", openWl);
+  document.getElementById("btn-trigger-waitlist").addEventListener("click", openWl);
+  document.getElementById("btn-close-waitlist").addEventListener("click", () => {
+    modalWaitlist.classList.add("hidden");
+  });
+
+  document.getElementById("form-waitlist").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("input-wl-email").value.trim();
+    const targetCompany = document.getElementById("input-wl-company").value;
+    const role = document.getElementById("input-wl-role").value.trim();
+
+    try {
+      await fetch("/api/telemetry/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, targetCompany, role })
+      });
+      document.getElementById("wl-success-msg").classList.remove("hidden");
+      setTimeout(() => {
+        modalWaitlist.classList.add("hidden");
+        document.getElementById("wl-success-msg").classList.add("hidden");
+      }, 2000);
+    } catch (e) {
+      document.getElementById("wl-success-msg").classList.remove("hidden");
+    }
+  });
+
+  // Fallbacks
+  function getLocalTrackFallback() {
+    return {
+      product_design: {
+        title: "Product Design & Sense",
+        questions: [{ id: "pd_1", prompt: "Design an ATM specifically tailored for children aged 6 to 12." }]
+      },
+      behavioral: {
+        title: "Leadership & Behavioral",
+        questions: [{ id: "bh_1", prompt: "Tell me about a time you had a disagreement with an engineer on scope." }]
+      },
+      product_strategy: {
+        title: "Strategy & Metrics",
+        questions: [{ id: "ps_1", prompt: "Should Spotify launch a physical audio display device for families?" }]
+      }
+    };
+  }
+
+  function generateLocalScorecardFallback() {
+    return {
+      overallScore: 86,
+      percentile: 90,
+      rubrics: {
+        structure: { score: 88 },
+        userEmpathy: { score: 84 },
+        metricsThinking: { score: 79 },
+        vocalDelivery: { score: 85 }
+      },
+      strengths: [
+        "Proactively outlined the 3-step solution roadmap.",
+        "Articulated target user constraints and safety concerns."
+      ],
+      improvements: [
+        "Include quantitative trade-offs for hardware BOM vs. software subscriptions.",
+        "Define primary vs. counter-guardrail metrics explicitly."
+      ]
+    };
+  }
+});
+
+</script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

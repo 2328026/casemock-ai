@@ -1,0 +1,85 @@
+{
+  "sessions": [
+    {
+      "id": "sess_1788279381387",
+      "track": "product_design",
+      "questionId": "pd_1",
+      "durationSeconds": 57,
+      "turns": 3,
+      "preConfidence": 3,
+      "postConfidence": 5,
+      "overallScore": 72,
+      "timestamp": "2026-09-01T16:16:21.387Z"
+    },
+    {
+      "id": "sess_demo_01",
+      "track": "product_design",
+      "question": "Design an ATM for children aged 6-12",
+      "durationSeconds": 245,
+      "turns": 3,
+      "preConfidence": 2,
+      "postConfidence": 4,
+      "overallScore": 84,
+      "timestamp": "2026-09-01T12:12:36.952Z"
+    },
+    {
+      "id": "sess_demo_02",
+      "track": "behavioral",
+      "question": "Tell me about a time you disagreed with an engineering lead on scope",
+      "durationSeconds": 185,
+      "turns": 2,
+      "preConfidence": 3,
+      "postConfidence": 5,
+      "overallScore": 91,
+      "timestamp": "2026-09-01T14:12:36.953Z"
+    },
+    {
+      "id": "sess_demo_03",
+      "track": "product_strategy",
+      "question": "Should Spotify launch a dedicated physical hardware device for audiobooks?",
+      "durationSeconds": 310,
+      "turns": 4,
+      "preConfidence": 2,
+      "postConfidence": 4,
+      "overallScore": 78,
+      "timestamp": "2026-09-01T15:12:36.953Z"
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "fb_1788279389344",
+      "rating": 5,
+      "comment": "",
+      "role": "Candidate Mock",
+      "timestamp": "2026-09-01T16:16:29.344Z"
+    },
+    {
+      "id": "fb_01",
+      "rating": 5,
+      "comment": "The avatar's nodding and facial reactions made it feel so much more real than chatting with ChatGPT. Definitely gave me real interview adrenaline!",
+      "role": "Aspiring APM",
+      "timestamp": "2026-09-01T13:12:36.953Z"
+    },
+    {
+      "id": "fb_02",
+      "rating": 5,
+      "comment": "The instant CIRCLES framework breakdown helped me realize I completely skipped identifying user pain points before jumping into features.",
+      "role": "Final Year CS Major",
+      "timestamp": "2026-09-01T14:42:36.953Z"
+    }
+  ],
+  "waitlist": [
+    {
+      "email": "sarah.k@stanford.edu",
+      "targetCompany": "Google APM",
+      "role": "Undergrad Senior",
+      "timestamp": "2026-09-01T11:12:36.953Z"
+    },
+    {
+      "email": "alex.chen@mit.edu",
+      "targetCompany": "Meta RPM",
+      "role": "Master's Student",
+      "timestamp": "2026-09-01T13:42:36.953Z"
+    }
+  ]
+}

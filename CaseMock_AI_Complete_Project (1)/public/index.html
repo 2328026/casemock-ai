@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaseMock AI | Interactive AI Avatar PM & Case Interview Partner</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-['Plus_Jakarta_Sans'] min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP NAVIGATION -->
+  <header class="border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-xl sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-emerald-400 p-0.5 shadow-lg shadow-indigo-500/20">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <i data-lucide="bot" class="w-5 h-5 text-indigo-400"></i>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">CaseMock AI</span>
+            <span class="px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">MVP v1.0</span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">AI Avatar PM & Case Interview Sparring Partner</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="btn-open-telemetry" class="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-xs font-medium text-slate-300 flex items-center gap-1.5 transition-all">
+          <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-indigo-400"></i>
+          <span>Live Validation Hub</span>
+        </button>
+
+        <a href="/slides.html" target="_blank" class="px-3 py-1.5 rounded-lg border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 text-xs font-medium text-indigo-300 flex items-center gap-1.5 transition-all">
+          <i data-lucide="presentation" class="w-3.5 h-3.5"></i>
+          <span>Slide Deck</span>
+        </a>
+
+        <button id="btn-open-waitlist" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-xs font-semibold text-white shadow-md shadow-indigo-600/25 transition-all">
+          Join Track Waitlist
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col">
+
+    <!-- STEP 1: ONBOARDING / TRACK SELECTION SCREEN -->
+    <section id="screen-setup" class="my-auto py-6">
+      <div class="max-w-3xl mx-auto text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-300 mb-3 font-medium">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Live Voice & Facial Reaction Simulation
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-3">
+          Master PM Interviews under <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-400 bg-clip-text text-transparent">Real Conversational Pressure</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+          Text chatbots fail at interview prep because real interviews are 80% about vocal pacing, structure under pressure, and reading visual cues. Practice live with <strong class="text-slate-200">Alex</strong>, your interactive AI PM Interviewer.
+        </p>
+      </div>
+
+      <!-- Track Cards -->
+      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <!-- Track 1 -->
+        <div data-track="product_design" class="track-card selected cursor-pointer p-5 rounded-2xl border-2 border-indigo-500 bg-slate-900/80 hover:bg-slate-900 transition-all relative overflow-hidden group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-3">
+            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-base mb-1">Product Design & Sense</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">CIRCLES framework, user segmentation, edge cases, feature prioritization & vision.</p>
+          <span class="inline-block text-[11px] font-semibold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">Most Popular</span>
+        </div>
+
+        <!-- Track 2 -->
+        <div data-track="behavioral" class="track-card cursor-pointer p-5 rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all relative overflow-hidden group">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-3">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-base mb-1">Leadership & Behavioral</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">STAR technique, stakeholder conflict, difficult trade-offs & learning from failure.</p>
+          <span class="inline-block text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">FAANG Standard</span>
+        </div>
+
+        <!-- Track 3 -->
+        <div data-track="product_strategy" class="track-card cursor-pointer p-5 rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 transition-all relative overflow-hidden group">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-3">
+            <i data-lucide="trending-up" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-100 text-base mb-1">Strategy & Metrics</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-3">Unit economics, competitive moats, cannibalization risks & North Star metric tree.</p>
+          <span class="inline-block text-[11px] font-semibold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">Executive Bar</span>
+        </div>
+      </div>
+
+      <!-- Question Selector & Pre-Confidence Check -->
+      <div class="max-w-2xl mx-auto bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl mb-6">
+        <div class="mb-5">
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Selected Case Question</label>
+          <select id="select-question" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-indigo-500">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-slate-800">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">Your Current Confidence Level</label>
+            <div class="flex items-center gap-1.5" id="pre-confidence-stars">
+              <button data-val="1" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+              <button data-val="2" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+              <button data-val="3" class="star-btn p-1 text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5 fill-amber-400"></i></button>
+              <button data-val="4" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+              <button data-val="5" class="star-btn p-1 text-slate-600 hover:text-amber-400 transition-colors"><i data-lucide="star" class="w-5 h-5"></i></button>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-1">Used to measure your confidence delta after the session</p>
+          </div>
+
+          <div class="flex items-center justify-between sm:justify-end gap-3">
+            <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+              <input type="checkbox" id="toggle-camera-mirror" checked class="rounded border-slate-700 bg-slate-950 text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+              <span>Enable Webcam Mirror</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button id="btn-start-interview" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-500 hover:from-indigo-500 hover:to-emerald-400 text-white font-bold text-base shadow-lg shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 mx-auto">
+          <i data-lucide="play" class="w-5 h-5 fill-white"></i>
+          <span>Start Live Mock Interview</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2: LIVE INTERVIEW SPARRING ROOM -->
+    <section id="screen-interview" class="hidden flex-1 flex flex-col gap-5">
+      
+      <!-- Session Bar -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>LIVE SESSION</span>
+          </div>
+          <span id="interview-track-badge" class="text-xs text-slate-400 font-medium hidden sm:inline">Product Design</span>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="flex items-center gap-2 text-xs">
+          <div class="flex items-center gap-1.5" id="step-turn-1">
+            <span class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px]">1</span>
+            <span class="text-slate-300 font-medium hidden md:inline">Framing & User</span>
+          </div>
+          <div class="w-4 h-0.5 bg-slate-700"></div>
+          <div class="flex items-center gap-1.5 opacity-50" id="step-turn-2">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-[10px]">2</span>
+            <span class="text-slate-400 font-medium hidden md:inline">Trade-offs & Edge</span>
+          </div>
+          <div class="w-4 h-0.5 bg-slate-700"></div>
+          <div class="flex items-center gap-1.5 opacity-50" id="step-turn-3">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-[10px]">3</span>
+            <span class="text-slate-400 font-medium hidden md:inline">Metrics & Wrap</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 text-xs font-mono text-slate-300 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+            <i data-lucide="clock" class="w-3.5 h-3.5 text-indigo-400"></i>
+            <span id="session-timer">00:00</span>
+          </div>
+          <button id="btn-end-early" class="text-xs text-rose-400 hover:text-rose-300 border border-rose-500/20 bg-rose-500/10 px-2.5 py-1 rounded-lg transition-all">
+            End & Grade
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Stage: Avatar + Candidate Camera Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 flex-1 items-stretch">
+        
+        <!-- Left 7 Cols: AI Avatar Arena -->
+        <div class="lg:col-span-7 flex flex-col bg-slate-900/50 border border-slate-800 rounded-2xl p-5 relative overflow-hidden shadow-2xl justify-between min-h-[460px]">
+          
+          <!-- Avatar Status Header -->
+          <div class="flex items-center justify-between z-10">
+            <div class="flex items-center gap-3">
+              <div class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></div>
+              <div>
+                <h2 class="text-base font-bold text-white flex items-center gap-1.5">
+                  Alex
+                  <span class="text-[11px] font-normal text-slate-400">· Senior Lead PM Interviewer</span>
+                </h2>
+              </div>
+            </div>
+
+            <!-- Dynamic State Badge -->
+            <div id="avatar-state-pill" class="px-3 py-1 rounded-full text-xs font-medium bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5">
+              <i data-lucide="ear" class="w-3.5 h-3.5 text-indigo-400"></i>
+              <span id="avatar-state-text">Alex is listening attentively...</span>
+            </div>
+          </div>
+
+          <!-- Avatar Visual Stage -->
+          <div class="my-auto py-4 flex flex-col items-center justify-center relative">
+            <div class="relative w-52 h-52 sm:w-60 sm:h-60 flex items-center justify-center">
+              
+              <!-- Glow Aura -->
+              <div id="avatar-aura" class="absolute inset-0 rounded-full bg-indigo-600/20 blur-2xl transition-all duration-700 animate-pulse"></div>
+
+              <!-- Animated SVG Avatar -->
+              <div id="avatar-canvas-container" class="relative z-10 w-full h-full flex items-center justify-center">
+                <svg id="alex-avatar" viewBox="0 0 200 200" class="w-full h-full drop-shadow-2xl avatar-idle">
+                  <defs>
+                    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fdba74" />
+                      <stop offset="100%" stop-color="#f97316" />
+                    </linearGradient>
+                    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1e293b" />
+                      <stop offset="100%" stop-color="#0f172a" />
+                    </linearGradient>
+                    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#334155" />
+                      <stop offset="100%" stop-color="#0f172a" />
+                    </linearGradient>
+                  </defs>
+
+                  <path d="M 30 190 Q 40 140 100 140 Q 160 140 170 190 Z" fill="url(#suitGrad)" stroke="#334155" stroke-width="2" />
+                  <polygon points="100,140 85,160 115,160" fill="#f8fafc" />
+                  <polygon points="100,160 92,185 108,185" fill="#6366f1" />
+                  <rect x="86" y="115" width="28" height="30" rx="4" fill="#fb923c" />
+
+                  <g id="avatar-head" class="transition-transform duration-300 origin-bottom">
+                    <ellipse cx="100" cy="80" rx="42" ry="48" fill="url(#skinGrad)" />
+                    <path d="M 58 75 Q 60 35 100 35 Q 140 35 142 75 Q 125 50 100 52 Q 75 50 58 75 Z" fill="url(#hairGrad)" />
+
+                    <path id="eyebrow-left" d="M 72 65 Q 82 62 90 66" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none" />
+                    <path id="eyebrow-right" d="M 110 66 Q 118 62 128 65" stroke="#1e293b" stroke-width="3" stroke-linecap="round" fill="none" />
+
+                    <g id="avatar-eyes">
+                      <ellipse cx="80" cy="76" rx="6" ry="6" fill="#ffffff" />
+                      <circle id="pupil-left" cx="81" cy="76" r="3.5" fill="#0f172a" />
+                      <circle cx="82" cy="74" r="1.2" fill="#ffffff" />
+
+                      <ellipse cx="120" cy="76" rx="6" ry="6" fill="#ffffff" />
+                      <circle id="pupil-right" cx="121" cy="76" r="3.5" fill="#0f172a" />
+                      <circle cx="122" cy="74" r="1.2" fill="#ffffff" />
+                    </g>
+
+                    <path d="M 100 78 Q 103 88 98 90" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" fill="none" />
+                    <path id="avatar-mouth" d="M 86 104 Q 100 108 114 104" stroke="#7c2d12" stroke-width="3.5" stroke-linecap="round" fill="#7c2d12" />
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Audio Waveform Visualizer Ring -->
+              <div id="audio-waveform-bars" class="absolute -bottom-2 flex items-center gap-1 opacity-0 transition-opacity duration-300">
+                <span class="w-1 h-3 bg-indigo-500 rounded-full animate-bounce"></span>
+                <span class="w-1 h-6 bg-indigo-400 rounded-full animate-bounce [animation-delay:0.1s]"></span>
+                <span class="w-1 h-8 bg-emerald-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                <span class="w-1 h-5 bg-indigo-400 rounded-full animate-bounce [animation-delay:0.3s]"></span>
+                <span class="w-1 h-2 bg-indigo-500 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+              </div>
+            </div>
+
+            <!-- Speech Bubble -->
+            <div class="mt-3 max-w-lg w-full bg-slate-950/80 border border-slate-800 rounded-2xl p-4 shadow-lg backdrop-blur-md">
+              <div class="flex items-center gap-2 mb-1">
+                <i data-lucide="message-square" class="w-3.5 h-3.5 text-indigo-400"></i>
+                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Alex (Interviewer)</span>
+              </div>
+              <p id="interviewer-speech-text" class="text-sm sm:text-base font-medium text-slate-100 leading-relaxed">
+                Loading case question...
+              </p>
+            </div>
+          </div>
+
+          <!-- Coach Hint -->
+          <div class="bg-indigo-950/40 border border-indigo-500/20 rounded-xl p-3 flex items-start gap-2.5 z-10">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
+            <div class="text-xs">
+              <span class="font-semibold text-indigo-300">Live Rubric Coach: </span>
+              <span id="coach-hint-text" class="text-slate-300">Outline your framework upfront (e.g. CIRCLES or STAR) before detailing solutions.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Candidate Response Arena + Live Video PIP -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          
+          <div id="webcam-container" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 relative overflow-hidden flex flex-col items-center justify-center min-h-[150px]">
+            <video id="user-webcam" autoplay playsinline muted class="w-full h-36 object-cover rounded-xl bg-slate-950"></video>
+            <div class="absolute top-5 left-5 flex items-center gap-2 bg-slate-900/80 backdrop-blur-md px-2 py-1 rounded-md border border-slate-700 text-[10px] text-slate-300 font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>Webcam Mirror (Eye Contact Check)</span>
+            </div>
+          </div>
+
+          <!-- Speech-to-Text Transcript & Input Arena -->
+          <div class="flex-1 bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <i data-lucide="mic" class="w-3.5 h-3.5 text-indigo-400"></i>
+                  <span>Your Spoken Response</span>
+                </label>
+                <span id="word-count-badge" class="text-[11px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">0 words</span>
+              </div>
+
+              <div class="relative">
+                <textarea id="user-transcript-input" rows="5" placeholder="Click 'Tap to Speak' or type your response here... (Speak out loud for real sparring practice!)" class="w-full bg-slate-950/80 border border-slate-700 rounded-xl p-4 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 leading-relaxed resize-none"></textarea>
+                
+                <div id="stt-active-indicator" class="hidden absolute bottom-3 right-3 flex items-center gap-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2.5 py-1 rounded-full text-xs font-semibold animate-pulse">
+                  <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                  <span>Listening to your voice...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex items-center gap-3">
+              <button id="btn-toggle-mic" class="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 transition-all">
+                <i data-lucide="mic" class="w-4 h-4"></i>
+                <span id="mic-button-label">Tap to Speak</span>
+              </button>
+
+              <button id="btn-submit-turn" class="py-3 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/25 transition-all">
+                <span>Send</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: SCORECARD MODAL -->
+    <div id="modal-scorecard" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl my-8 relative">
+        
+        <div class="text-center mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold mb-2">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+            Interview Sparring Completed
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Your PM Competency Diagnostic</h2>
+          <p class="text-xs sm:text-sm text-slate-400">Evaluated against FAANG & Tier-1 Consulting Interview Bars</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Overall Score</span>
+            <span id="card-overall-score" class="text-3xl font-extrabold text-indigo-400">86</span>
+            <span class="text-xs text-slate-500 block mt-1">/ 100</span>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Candidate Percentile</span>
+            <span id="card-percentile" class="text-3xl font-extrabold text-emerald-400">Top 12%</span>
+            <span class="text-xs text-slate-500 block mt-1">vs. 140+ Mock Sessions</span>
+          </div>
+
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-center">
+            <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Confidence Gain</span>
+            <span id="card-confidence-gain" class="text-3xl font-extrabold text-purple-400">+2 Stars</span>
+            <span class="text-xs text-slate-500 block mt-1">Pre vs. Post Session</span>
+          </div>
+        </div>
+
+        <!-- Rubric Bars -->
+        <div class="space-y-3 mb-6 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">Structure & Framework (CIRCLES/STAR)</span>
+              <span id="score-structure" class="text-indigo-400">88%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-structure" class="h-full bg-indigo-500 transition-all duration-1000" style="width: 88%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">User Empathy & Persona Segmentation</span>
+              <span id="score-empathy" class="text-emerald-400">82%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-empathy" class="h-full bg-emerald-500 transition-all duration-1000" style="width: 82%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">Metrics, Trade-offs & Business Impact</span>
+              <span id="score-metrics" class="text-purple-400">79%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-metrics" class="h-full bg-purple-500 transition-all duration-1000" style="width: 79%"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span class="text-slate-300">Vocal Pacing & Confidence Under Pressure</span>
+              <span id="score-delivery" class="text-amber-400">85%</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div id="bar-delivery" class="h-full bg-amber-500 transition-all duration-1000" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-xl p-4">
+            <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-4 h-4"></i>
+              Key Strengths
+            </h4>
+            <ul id="list-strengths" class="text-xs text-slate-300 space-y-1.5"></ul>
+          </div>
+
+          <div class="bg-amber-950/20 border border-amber-500/20 rounded-xl p-4">
+            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <i data-lucide="target" class="w-4 h-4"></i>
+              Areas for Next Practice
+            </h4>
+            <ul id="list-improvements" class="text-xs text-slate-300 space-y-1.5"></ul>
+          </div>
+        </div>
+
+        <!-- Post Session Feedback -->
+        <div class="border-t border-slate-800 pt-4 mb-6">
+          <h4 class="text-xs font-bold text-white mb-2">How realistic did this AI Avatar session feel?</h4>
+          <div class="flex items-center gap-1.5 mb-3" id="post-feedback-stars">
+            <button data-val="1" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="2" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="3" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="4" class="fb-star text-slate-600 hover:text-amber-400"><i data-lucide="star" class="w-5 h-5"></i></button>
+            <button data-val="5" class="fb-star text-amber-400"><i data-lucide="star" class="w-5 h-5 fill-amber-400"></i></button>
+          </div>
+          <div class="flex gap-2">
+            <input type="text" id="input-feedback-comment" placeholder="What resonated or what would make Alex feel even more realistic?" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+            <button id="btn-submit-feedback" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold">Submit</button>
+          </div>
+          <p id="feedback-success-msg" class="hidden text-xs text-emerald-400 mt-2">Recorded to live telemetry hub.</p>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <button id="btn-restart-mock" class="px-4 py-2.5 rounded-xl border border-slate-700 hover:bg-slate-800 text-slate-300 text-xs font-semibold flex items-center gap-2">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            <span>Practice Another Track</span>
+          </button>
+          <button id="btn-trigger-waitlist" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-emerald-500 hover:from-indigo-500 hover:to-emerald-400 text-white text-xs font-bold shadow-lg shadow-indigo-600/25">
+            Join Advanced Track Waitlist
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: TELEMETRY MODAL -->
+    <div id="modal-telemetry" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl my-8 relative">
+        <button id="btn-close-telemetry" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white">Live Product Validation & Telemetry Hub</h3>
+            <p class="text-xs text-slate-400">Real-time user engagement, session completion rates, and qualitative signals</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Total Mock Sessions</span>
+            <span id="stat-total-sessions" class="text-2xl font-bold text-white">--</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Avg Session Score</span>
+            <span id="stat-avg-score" class="text-2xl font-bold text-indigo-400">--</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Confidence Delta</span>
+            <span id="stat-avg-gain" class="text-2xl font-bold text-emerald-400">--</span>
+          </div>
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+            <span class="text-[11px] text-slate-400 uppercase tracking-wider block mb-1">Avg User Rating</span>
+            <span id="stat-avg-rating" class="text-2xl font-bold text-amber-400">--</span>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Recent User Feedback Signals</h4>
+          <div id="telemetry-feedback-list" class="space-y-2 max-h-48 overflow-y-auto pr-2"></div>
+        </div>
+
+        <div class="bg-indigo-950/30 border border-indigo-500/20 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider">Company-Specific Track Waitlist</h4>
+            <p class="text-xs text-slate-400">Prospective applicants signed up for Google APM, Meta RPM & McKinsey tracks</p>
+          </div>
+          <span id="stat-waitlist-count" class="text-xl font-bold text-white bg-indigo-600 px-3 py-1 rounded-lg">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: WAITLIST MODAL -->
+    <div id="modal-waitlist" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+        <button id="btn-close-waitlist" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <div class="text-center mb-5">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mx-auto mb-3">
+            <i data-lucide="rocket" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1">Get Access to Specialized Tracks</h3>
+          <p class="text-xs text-slate-400">Join the waitlist for company-calibrated AI avatar interviewers.</p>
+        </div>
+
+        <form id="form-waitlist" class="space-y-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email</label>
+            <input type="email" id="input-wl-email" required placeholder="you@university.edu" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Target Company Track</label>
+            <select id="input-wl-company" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+              <option value="Google APM">Google APM (Associate Product Manager)</option>
+              <option value="Meta RPM">Meta RPM (Rotational Product Manager)</option>
+              <option value="McKinsey / BCG">McKinsey / BCG Case Interview</option>
+              <option value="Amazon PM-T">Amazon PM-Technical</option>
+              <option value="Stripe / Uber">Tier-1 Tech PM</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Current Background</label>
+            <input type="text" id="input-wl-role" placeholder="e.g. Undergrad CS / MBA / Aspiring PM" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-indigo-500">
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-bold shadow-lg shadow-indigo-600/25 transition-all mt-4">
+            Join Early Access Waitlist
+          </button>
+        </form>
+
+        <p id="wl-success-msg" class="hidden text-xs text-center text-emerald-400 mt-3 font-medium">You are on the priority waitlist! We'll notify you shortly.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/60 bg-slate-950/80 py-4 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <div>Built for <strong>Product Intern Assignment: AI Avatar Product</strong></div>
+      <div class="flex items-center gap-4">
+        <span>Web Speech STT & TTS</span>
+        <span>·</span>
+        <span>CIRCLES & STAR Rubrics</span>
+        <span>·</span>
+        <span>Real-time Telemetry</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
